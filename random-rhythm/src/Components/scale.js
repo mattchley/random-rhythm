@@ -7,11 +7,11 @@ function Scale() {
         scaleList: [
             {
                 Name: "Major",
-                steps: [1, 1, .5, 1, 1, 1, .5] 
+                notesIndex: [0, 2, 4, 5, 7, 9, 11, 12] 
             },
             {
                 Name: "Minor",
-                steps: [1, .5, 1, 1, .5, 1, 1] 
+                notesIndex: [0, 2, 3, 5, 7, 9, 10, 12] 
             }
         ]
     }
