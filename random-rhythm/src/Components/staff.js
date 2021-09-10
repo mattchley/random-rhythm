@@ -3,51 +3,65 @@ import React from "react";
 
 function Staff() {
     const noteArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
+    const noteArrayTwo = ["C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "A♯/B♭", "B"]
     const scaleType = true
 
     // funtion that changes the the scale based on the note array
     const createScale = (noteArray, scaleType) => {
+
+        const minorScaleFilter = noteArray.filter((note, index) => {
+            if ([index] == 0) {
+                return note
+            } else if ([index] == 2) {
+                return note
+            } else if ([index] == 3) {
+                return note
+            } else if ([index] == 5) {
+                return note
+            } else if ([index] == 7) {
+                return note
+            } else if ([index] == 8) {
+                return note
+            } else if ([index] == 10) {
+                return note
+            } else if ([index] == 12) {
+                return note
+            }
+        })
+
+        const majorScaleFilter = noteArrayTwo.filter((note, index) => {
+            if ([index] == 0) {
+                return note
+            } else if ([index] == 2) {
+                return note
+            } else if ([index] == 4) {
+                return note
+            } else if ([index] == 5) {
+                return note
+            } else if ([index] == 7) {
+                return note
+            } else if ([index] == 9) {
+                return note
+            } else if ([index] == 11) {
+                return note
+            }
+        })
         // Now that the array is in the fuction there will need to be a filtering of notes based on the scale type
         if (scaleType == true) {
             // minor scale pattern steps: [2steps, 1step, 2steps, 2steps, 1step, 2steps, 2steps]
             // There are 12 notes in an octave and we only need 8 that folow the above pattern
-            // the index counts should be 0 2 3 5 7 9 10 12
-            let i = 0
-            while (i <= 12) {
-                switch(noteArray[i]){
-                    case 0:
-                    console.log(i)
-                    ++i
-            //         case 2:
-            //         console.log(i)
-            //         ++i
-            //         case 3:
-            //         console.log(i)
-            //         ++i
-            //         case 5:
-            //         console.log(i)
-            //         ++i
-            //         case 7:
-            //         console.log(i)
-            //         ++i
-            //         case 9:
-            //         console.log(i)
-            //         ++i
-            //         case 10:
-            //         console.log(i)
-            //         ++i
-                    case 12:
-                    console.log(i)
-                    ++i
-                    break;
-                }
-            }
+            // the index counts should be 0 2 3 5 7 8 10 12
+            // noteArray.forEach(function (note, index) {
+            //     console.log(note, index)
+            // });
+            console.log(minorScaleFilter)
+
         } else {
             console.log("scale is major")
             // minor scale pattern steps:[2 steps, 2 steps, 1 step, 2 steps, 2 steps, 2 steps, 1 step] 
             // There are 12 notes in an octave and we only need 8 that folow the above pattern
-            // the index counts should be 0 2 4 5 7 9 11 12
-
+            // the index counts should be 0 2 4 5 7 9 12
+            console.log(majorScaleFilter)
         }
 
     }
