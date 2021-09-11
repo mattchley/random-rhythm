@@ -5,21 +5,19 @@ function Staff() {
     const noteArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
     const noteArrayTwo = ["C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "A♯/B♭", "B"]
     const scaleType = true
-    const keyType = "F"
+    const keyType = "C"
 
     // this function is set to change the key center of the scale.
     const changeKey = (noteArrayTwo, keyType) => {
-        console.log(noteArrayTwo)
-        console.log(keyType)
-
         // The default for scales is C that starts with C, what this fucntion does is chop and insert the notes in the proper order.
+        
+        // This portion finds the index of the Key to start the new scale
+        let keyIndex = noteArrayTwo.findIndex(note => note == keyType)
 
-        // in this example we are going from C to F which is 5 indices away from it
-        // this provides the simple logic of the fucntion. Noe where to slice needs to be deteremined.
-        let firstHalf = noteArrayTwo.slice(5, 11)
-        let secondHalf = noteArrayTwo.slice(0, 5)
-        console.log(noteArrayTwo.slice(5, 11))
-        console.log(noteArrayTwo.slice(0, 5))
+        // this provides the logic of the function.
+        // Since we are essentially cuting the array in half we will use 2 variables to deteremine the keyindex to the end and then the remaining notes to add to end of the first half.
+        let firstHalf = noteArrayTwo.slice(keyIndex, noteArrayTwo.length)
+        let secondHalf = noteArrayTwo.slice(0, keyIndex)
         console.log(firstHalf.concat(secondHalf))
     }
 
