@@ -5,24 +5,41 @@ function Staff() {
     const noteArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
     const noteArrayTwo = ["C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "A♯/B♭", "B"]
     const scaleType = true
+    const keyType = "F"
+
+    // this function is set to change the key center of the scale.
+    const changeKey = (noteArrayTwo, keyType) => {
+        console.log(noteArrayTwo)
+        console.log(keyType)
+
+        // The default for scales is C that starts with C, what this fucntion does is chop and insert the notes in the proper order.
+
+        // in this example we are going from C to F which is 5 indices away from it
+        // this provides the simple logic of the fucntion. Noe where to slice needs to be deteremined.
+        let firstHalf = noteArrayTwo.slice(5, 11)
+        let secondHalf = noteArrayTwo.slice(0, 5)
+        console.log(noteArrayTwo.slice(5, 11))
+        console.log(noteArrayTwo.slice(0, 5))
+        console.log(firstHalf.concat(secondHalf))
+    }
 
     // funtion that changes the the scale based on the note array
     const createScale = (noteArray, scaleType) => {
         // This funciton filters out the notes in the noteArray by their index to conform to the Minor scale
         const minorScaleFilter = noteArray.filter((note, index) => {
-            if ([index] === 0) {
+            if ([index] == 0) {
                 return note
-            } else if ([index] === 2) {
+            } else if ([index] == 2) {
                 return note
-            } else if ([index] === 3) {
+            } else if ([index] == 3) {
                 return note
-            } else if ([index] === 5) {
+            } else if ([index] == 5) {
                 return note
-            } else if ([index] === 7) {
+            } else if ([index] == 7) {
                 return note
-            } else if ([index] === 8) {
+            } else if ([index] == 8) {
                 return note
-            } else if ([index] === 10) {
+            } else if ([index] == 10) {
                 return note
             }
 
@@ -30,19 +47,19 @@ function Staff() {
 
         // This funciton filters out the notes in the noteArray by their index to conform to the Minor scale
         const majorScaleFilter = noteArrayTwo.filter((note, index) => {
-            if ([index] === 0) {
+            if ([index] == 0) {
                 return note
-            } else if ([index] === 2) {
+            } else if ([index] == 2) {
                 return note
-            } else if ([index] === 4) {
+            } else if ([index] == 4) {
                 return note
-            } else if ([index] === 5) {
+            } else if ([index] == 5) {
                 return note
-            } else if ([index] === 7) {
+            } else if ([index] == 7) {
                 return note
-            } else if ([index] === 9) {
+            } else if ([index] == 9) {
                 return note
-            } else if ([index] === 11) {
+            } else if ([index] == 11) {
                 return note
             }
         })
@@ -65,6 +82,8 @@ function Staff() {
 
     const handleSubmit = () => {
         createScale(noteArray, scaleType);
+        changeKey(noteArrayTwo, keyType)
+
     }
 
     return (
@@ -78,7 +97,6 @@ function Staff() {
                 <option value={y}>{y}</option>
             ))}</p>
             <button onClick={handleSubmit}>Test</button>
-            {/* needs to be a div where the notes are written out on the page */}
 
         </div>
     )
@@ -86,3 +104,6 @@ function Staff() {
 }
 
 export default Staff
+
+
+
