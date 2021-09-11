@@ -8,16 +8,16 @@ function Staff() {
     const keyType = "C"
 
     // this function is set to change the key center of the scale.
-    const changeKey = (noteArrayTwo, keyType) => {
+    const changeKey = (noteArray, keyType) => {
         // The default for scales is C that starts with C, what this fucntion does is chop and insert the notes in the proper order.
-        
+
         // This portion finds the index of the Key to start the new scale
-        let keyIndex = noteArrayTwo.findIndex(note => note == keyType)
+        let keyIndex = noteArray.findIndex(note => note == keyType)
 
         // this provides the logic of the function.
         // Since we are essentially cuting the array in half we will use 2 variables to deteremine the keyindex to the end and then the remaining notes to add to end of the first half.
-        let firstHalf = noteArrayTwo.slice(keyIndex, noteArrayTwo.length)
-        let secondHalf = noteArrayTwo.slice(0, keyIndex)
+        let firstHalf = noteArray.slice(keyIndex, noteArray.length)
+        let secondHalf = noteArray.slice(0, keyIndex)
         console.log(firstHalf.concat(secondHalf))
     }
 
@@ -80,7 +80,7 @@ function Staff() {
 
     const handleSubmit = () => {
         createScale(noteArray, scaleType);
-        changeKey(noteArrayTwo, keyType)
+        changeKey(noteArray, keyType)
 
     }
 

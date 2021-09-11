@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 
 
 function Key() {
-    const key =
-    {
-        keyList: ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
+    const [key, setKey] = useState("A");
+
+
+    let keyList = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
+    
+    const handleSubmit = () => {
+        console.log(key)
+
     }
 
     return (
         <div>
-            <label for="keySignature">Choose a Key Key Signature:</label>
+            <label for="keySignature">Choose a Key Signature:</label>
 
-            <select name="keySignature" id="keySignature">
-                {key.keyList.map(y => (
+            <select name="keySignature" onChange={e => setKey(e.currentTarget.value)} id="keySignature">
+                {keyList.map(y => (
                     <option value={y}>{y}</option>
                 ))}
             </select>
+            <button onClick={handleSubmit}>Test State</button>
         </div>
     )
 
