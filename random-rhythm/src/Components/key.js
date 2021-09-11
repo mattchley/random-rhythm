@@ -9,7 +9,6 @@ function Key() {
     
     const handleSubmit = () => {
         console.log(key)
-
     }
 
     return (
