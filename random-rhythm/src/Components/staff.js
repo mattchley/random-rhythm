@@ -81,21 +81,12 @@ const Staff = props => {
 
     }
 
-    const handleSubmit = () => {
-        // console.log(changeKey(noteArray, keyType));
-        console.log(createScale(scaleType, changeKey(noteArray, keyType)));
-        // console.log(props.value.scale[0])
-        // console.log(props.value.key[0])
-
-    }
-
     return (
         <div>
-            <h1> A minor scale print out </h1>
+            <h1> {props.value.key[0]} {props.value.scale[0]} scale print out </h1>
             <p>{createScale(scaleType, changeKey(noteArray, keyType)).map(y => (
                 <option value={y}>{y}</option>
             ))}</p>
-            <button onClick={handleSubmit}>Test</button>
 
         </div>
     )
