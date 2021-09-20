@@ -1,15 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
 
-function Scale() {
-
-    const [scale, setScale] = useState("Major");
-
-
+const Scale = props => {
     let scaleList = [
         {
             Name: "Major",
-            notesIndex: [0,2, 4, 5, 7, 9, 11]
+            notesIndex: [0, 2, 4, 5, 7, 9, 11]
         },
         {
             Name: "Minor",
@@ -17,21 +13,15 @@ function Scale() {
         }
     ]
 
-    const handleSubmit = () => {
-        console.log(scale)
-    }
-
 
     return (
         <div>
             <label for="scale">Choose a Scale:</label>
-
-            <select name="scale" onChange={e => setScale(e.currentTarget.value)}id="scale">
+            <select name="scale" onChange={e => props.onChange(e.currentTarget.value)} id="scale">
                 {scaleList.map(y => (
                     <option value={y.Name}>{y.Name}</option>
                 ))}
             </select>
-            <button onClick={handleSubmit}>Test State</button>
         </div>
     )
 

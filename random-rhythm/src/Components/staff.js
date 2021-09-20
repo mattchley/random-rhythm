@@ -3,7 +3,7 @@ import React , {useState} from "react";
 
 function Staff() {
     const [scale, setScale] = useState(["A"]);
-
+    // eventually will all be fed from the scale/key components
     const noteArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
     const noteArrayTwo = ["C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭", "A", "A♯/B♭", "B"]
     const scaleType = true
@@ -82,18 +82,14 @@ function Staff() {
     }
 
     const handleSubmit = () => {
-        setScale(createScale(noteArray, scaleType))
         console.log(changeKey(noteArray, keyType));
+        setScale(createScale(noteArray, scaleType));
 
     }
 
     return (
         <div>
             <h1> A minor scale print out </h1>
-
-            <p>intended print out: A B C D E F G</p>
-
-            <h3>PRINT OUT</h3>
             <p>{scale.map(y => (
                 <option value={y}>{y}</option>
             ))}</p>
