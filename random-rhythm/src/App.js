@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Key onChange={(value) => setKey(value)} />
       <Scale onChange={(value) => setScale(value)} />
-      <Staff />
+      <Staff value = {{scale :[scale, setScale], key :[key, setKey]}}/>
       <button onClick={handleSubmit}>Test Props State Managemnet</button>
     </div>
   );
