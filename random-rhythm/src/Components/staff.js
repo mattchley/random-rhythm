@@ -92,9 +92,9 @@ const Staff = props => {
     return (
         <div>
             <h1> A minor scale print out </h1>
-            {/* <p>{scale.map(y => (
+            <p>{createScale(scaleType, changeKey(noteArray, keyType)).map(y => (
                 <option value={y}>{y}</option>
-            ))}</p> */}
+            ))}</p>
             <button onClick={handleSubmit}>Test</button>
 
         </div>
