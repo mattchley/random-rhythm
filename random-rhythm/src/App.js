@@ -20,8 +20,8 @@ function App() {
   }
   return (
     <div className="App">
-      <Key onChange={(value) => setKey(value)} />
-      <Scale onChange={(value) => setScale(value)} />
+      <Key onChange={(value) => setKey(value)} value={{ keyArray: keyArray }}/>
+      <Scale onChange={(value) => setScale(value)} value={{ scaleArray: scaleArray }} />
       <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray }} />
       <Staff value={{ scale: [scale, setScale], key: [key, setKey] }} />
 
