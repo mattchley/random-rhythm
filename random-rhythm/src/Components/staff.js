@@ -5,7 +5,7 @@ const Staff = props => {
 
     // const [scale, setScale] = useState(["A"]);
     // eventually will all be fed from the scale/key components
-    const noteArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
+    const noteArray = props.value.keyArray
     const scaleType = props.value.scale[0]
     const keyType = props.value.key[0]
 

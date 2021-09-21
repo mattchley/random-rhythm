@@ -14,16 +14,12 @@ function App() {
   const scaleArray = ["Major", "Minor"]
   const keyArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
 
-  const handleSubmit = () => {
-    console.log(scale)
-    console.log(key)
-  }
   return (
     <div className="App">
       <Key onChange={(value) => setKey(value)} value={{ keyArray: keyArray }}/>
       <Scale onChange={(value) => setScale(value)} value={{ scaleArray: scaleArray }} />
       <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray }} />
-      <Staff value={{ scale: [scale, setScale], key: [key, setKey] }} />
+      <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray }} />
 
 
     </div>
