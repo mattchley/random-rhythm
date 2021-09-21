@@ -19,7 +19,11 @@ function App() {
       <Key onChange={(value) => setKey(value)} value={{ keyArray: keyArray }} />
       <Scale onChange={(value) => setScale(value)} value={{ scaleArray: scaleArray }} />
       {/* trying to connect the props from the random button to the use state to allow for a genereated staff on click. Partially there because on click shows the props passing but not selected */}
-      <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray }} onClick={(value) => console.log(`hit ${value}`)}/>
+      <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray }} onClick={(value) => {
+        setKey(value[0]);
+        setScale(value[1])
+        console.log(`hit ${value}`)
+      }} />
       <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray }} />
 
 
