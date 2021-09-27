@@ -1,7 +1,7 @@
 import Key from './Components/key'
 import Scale from './Components/scale'
 import Staff from './Components/staff'
-import Tempo  from './Components/tempo';
+import Tempo from './Components/tempo';
 import RandomButton from './Components/randomButton';
 import './App.css';
 import React, { useState } from "react";
@@ -9,7 +9,7 @@ import React, { useState } from "react";
 function App() {
   const [scale, setScale] = useState("Major");
   const [key, setKey] = useState("A");
-  const [tempo, setTempo] =useState(' Largo: 40 - 60 ')
+  const [tempo, setTempo] = useState(' Largo: 40 - 60 ')
 
   const scaleArray = ["Major", "Minor"]
   const keyArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
@@ -21,18 +21,19 @@ function App() {
 
       <Scale onChange={(value) => setScale(value)} value={{ scaleArray: scaleArray }} />
 
-      <Tempo onChange={(value) => setTempo(value)} value={{ tempoArray: tempoArray }}/>
+      <Tempo onChange={(value) => setTempo(value)} value={{ tempoArray: tempoArray }} />
 
-      <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray }}
+      <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray, tempoArray: tempoArray }}
         onClick={(value) => {
           setKey(value[0]);
-          setScale(value[1])
+          setScale(value[1]);
+          setTempo(value[2]);
           console.log(`hit ${value}`)
         }} />
-      
-      <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo:[tempo, setTempo] }} />
-      
-    
+
+      <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo] }} />
+
+
     </div>
   );
 }
