@@ -83,7 +83,7 @@ const Staff = props => {
 
     return (
         <div>
-            <h1> {props.value.key[0]} {props.value.scale[0]} scale print out </h1>
+            <h1> {props.value.key[0]} {props.value.scale[0]} scale at {props.value.tempo[0]}</h1>
             <p>{createScale(scaleType, changeKey(noteArray, keyType)).map(y => (
                 <option value={y}>{y}</option>
             ))}</p>
