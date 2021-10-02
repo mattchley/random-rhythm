@@ -3,8 +3,6 @@ import React from "react";
 
 const Staff = props => {
 
-    // const [scale, setScale] = useState(["A"]);
-    // eventually will all be fed from the scale/key components
     const noteArray = props.value.keyArray
     const scaleType = props.value.scale[0]
     const keyType = props.value.key[0]
@@ -84,7 +82,7 @@ const Staff = props => {
 
     return (
         <div>
-            <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm}</h1>
+            <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm} BPM</h1>
             <p>{createScale(scaleType, changeKey(noteArray, keyType)).map(y => (
                 <option value={y}>{y}</option>
             ))}</p>

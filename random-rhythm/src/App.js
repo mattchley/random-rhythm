@@ -3,6 +3,7 @@ import Scale from './Components/scale'
 import Staff from './Components/staff'
 import Tempo from './Components/tempo';
 import RandomButton from './Components/randomButton';
+import Metronome from './Components/metronome';
 import './App.css';
 import React, { useState } from "react";
 
@@ -34,11 +35,11 @@ function App() {
           setScale(value[1]);
           setTempo(value[2]);
           setBpm(value[3]);
-          console.log(`hit ${value[3]}`)
         }} />
 
       <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
 
+      <Metronome value={{ bpm: bpm }} />
 
     </div>
   );
