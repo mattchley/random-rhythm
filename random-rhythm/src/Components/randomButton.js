@@ -7,15 +7,17 @@ const RandomButton = props => {
 
 
 
-    const randomTempo = (tempoObj) => {
-        let y = Math.abs(Math.ceil(Math.random() * props.value.tempoObjArray.length - 1))
-        let x = Math.ceil(Math.random() * (tempoObj[1].max - tempoObj[y].min) + tempoObj[y].min)
-        return `${tempoObj[y].name} at ${x}bpm`
+    const randomTempo = (tempoObj, z) => {
+        // let y = Math.abs(Math.ceil(Math.random() * props.value.tempoObjArray.length - 1))
+        let x = Math.ceil(Math.random() * (tempoObj[z].max - tempoObj[z].min) + tempoObj[z].min)
+
+        return x
+
     }
 
     const handleSubmit = () => {
         let tempoObj = props.value.tempoObjArray
-        randomTempo(tempoObj)
+        
         // this variable sets the terrishold for the Key generated
         let x = Math.abs(Math.ceil(Math.random() * props.value.keyArray.length - 1))
         // this variable sets the terrishold for the Scale generated
@@ -23,7 +25,9 @@ const RandomButton = props => {
         // this variable sets the terrishold for the Tempo generated
         let z = Math.abs(Math.ceil(Math.random() * props.value.tempoArray.length - 1))
 
-        return [props.value.keyArray[x], props.value.scaleArray[y], props.value.tempoArray[z], randomTempo(tempoObj)]
+        let v =randomTempo(tempoObj, z)
+       
+        return [props.value.keyArray[x], props.value.scaleArray[y], props.value.tempoArray[z], v]
 
 
         // // this will return Key generated props.value.keyArray[x]

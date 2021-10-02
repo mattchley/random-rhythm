@@ -10,6 +10,7 @@ function App() {
   const [scale, setScale] = useState("Major");
   const [key, setKey] = useState("A");
   const [tempo, setTempo] = useState(' Largo: 40 - 60 ')
+  const [bpm, setBpm] = useState('40')
 
   const scaleArray = ["Major", "Minor"]
   const keyArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
@@ -32,10 +33,11 @@ function App() {
           setKey(value[0]);
           setScale(value[1]);
           setTempo(value[2]);
+          setBpm(value[3]);
           console.log(`hit ${value[3]}`)
         }} />
 
-      <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo] }} />
+      <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
 
 
     </div>

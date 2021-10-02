@@ -8,6 +8,7 @@ const Staff = props => {
     const noteArray = props.value.keyArray
     const scaleType = props.value.scale[0]
     const keyType = props.value.key[0]
+    const bpm = props.value.bpm[0]
 
     // this function is set to change the key center of the scale.
     const changeKey = (noteArray, keyType) => {
@@ -83,7 +84,7 @@ const Staff = props => {
 
     return (
         <div>
-            <h1> {props.value.key[0]} {props.value.scale[0]} scale at {props.value.tempo[0]}</h1>
+            <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm}</h1>
             <p>{createScale(scaleType, changeKey(noteArray, keyType)).map(y => (
                 <option value={y}>{y}</option>
             ))}</p>
