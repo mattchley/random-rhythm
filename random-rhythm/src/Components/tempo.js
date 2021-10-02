@@ -4,6 +4,7 @@ import React from "react";
 const Tempo = props => {
     let tempo = props.value.tempoArray
 
+
     return (
         <div>
             <label for="tempo">Choose a Tempo:</label>
