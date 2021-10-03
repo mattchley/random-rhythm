@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 const Metronome = props => {
 
-    const [bpmRange, setBpmRange] =useState([])
+    const [bpmRange, setBpmRange] = useState([])
 
     let bpm = props.value.bpm
     let milliseconds = 60000 / bpm

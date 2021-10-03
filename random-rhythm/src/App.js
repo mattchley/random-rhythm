@@ -2,16 +2,20 @@ import Key from './Components/key'
 import Scale from './Components/scale'
 import Staff from './Components/staff'
 import Tempo from './Components/tempo';
+import BpmRange from './Components/bpmRange';
 import RandomButton from './Components/randomButton';
 import Metronome from './Components/metronome';
 import './App.css';
 import React, { useState } from "react";
+
 
 function App() {
   const [scale, setScale] = useState("Major");
   const [key, setKey] = useState("A");
   const [tempo, setTempo] = useState(' Largo: 40 - 60 ')
   const [bpm, setBpm] = useState('40')
+  let bpmRangeArray = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
+  const [bpmRange, setBpmRange] = useState(bpmRangeArray)
 
   const scaleArray = ["Major", "Minor"]
   const keyArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
@@ -21,6 +25,7 @@ function App() {
   { name: 'Allegro', bpm: '96-132', min: 96, max: 132 },
   { name: 'Vivace', bpm: '132-168', min: 132, max: 168 },
   { name: 'Presto', bpm: '168-208', min: 168, max: 208 }]
+
   return (
     <div className="App">
       <Key onChange={(value) => setKey(value)} value={{ keyArray: keyArray }} />
@@ -28,6 +33,8 @@ function App() {
       <Scale onChange={(value) => setScale(value)} value={{ scaleArray: scaleArray }} />
 
       <Tempo onChange={(value) => setTempo(value)} value={{ tempoArray: tempoArray }} />
+
+      <BpmRange onChange={(value) => setBpmRange(value)} value={{ bpmRangeArray: bpmRangeArray, bpm: bpm, tempo: tempo, tempoArray:tempoArray, tempoObjArray: tempoObjArray} }/>
 
       <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray, tempoArray: tempoArray, tempoObjArray: tempoObjArray }}
         onClick={(value) => {
@@ -39,7 +46,7 @@ function App() {
 
       <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
 
-      <Metronome value={{ bpm: bpm, tempo: tempo, tempoObjArray: tempoObjArray, tempoArray:tempoArray }} />
+      {/* <Metronome value={{ bpm: bpm, tempo: tempo, tempoObjArray: tempoObjArray }} /> */}
 
     </div>
   );
