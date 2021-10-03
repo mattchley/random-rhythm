@@ -14,8 +14,7 @@ function App() {
   const [key, setKey] = useState("A");
   const [tempo, setTempo] = useState(' Largo: 40 - 60 ')
   const [bpm, setBpm] = useState('40')
-  let bpmRangeArray = [40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]
-  const [bpmRange, setBpmRange] = useState(bpmRangeArray)
+
 
   const scaleArray = ["Major", "Minor"]
   const keyArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
@@ -34,7 +33,7 @@ function App() {
 
       <Tempo onChange={(value) => setTempo(value)} value={{ tempoArray: tempoArray }} />
 
-      <BpmRange onChange={(value) => setBpmRange(value)} value={{ bpmRangeArray: bpmRangeArray, bpm: bpm, tempo: tempo, tempoArray:tempoArray, tempoObjArray: tempoObjArray} }/>
+      <BpmRange onChange={(value) => setBpm(value)} value={{ bpm: bpm, tempo: tempo, tempoArray:tempoArray, tempoObjArray: tempoObjArray} }/>
 
       <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray, tempoArray: tempoArray, tempoObjArray: tempoObjArray }}
         onClick={(value) => {

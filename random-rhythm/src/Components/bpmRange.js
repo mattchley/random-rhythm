@@ -9,8 +9,6 @@ const BpmRange = props => {
     let tempoArray = props.value.tempoArray
     let bpmArray = []
 
-
-
     let x = tempoObjArray[tempoArray.indexOf(tempo)].max
     let y = tempoObjArray[tempoArray.indexOf(tempo)].min
     let z = tempoObjArray[tempoArray.indexOf(tempo)].min - 1
