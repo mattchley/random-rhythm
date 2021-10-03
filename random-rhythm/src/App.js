@@ -15,7 +15,6 @@ function App() {
   const [tempo, setTempo] = useState(' Largo: 40 - 60 ')
   const [bpm, setBpm] = useState('40')
 
-
   const scaleArray = ["Major", "Minor"]
   const keyArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
   const tempoArray = [' Largo: 40 - 60 ', ' Adagio: 60 - 72 ', ' Andante: 72 - 96 ', ' Allegro: 96 - 132 ', ' Vivace: 132 - 168 ', ' Presto: 168 - 208 ']
@@ -45,7 +44,7 @@ function App() {
 
       <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
 
-      {/* <Metronome value={{ bpm: bpm, tempo: tempo, tempoObjArray: tempoObjArray }} /> */}
+      <Metronome value={{ bpm: bpm, tempo: tempo, tempoObjArray: tempoObjArray }} />
 
     </div>
   );
