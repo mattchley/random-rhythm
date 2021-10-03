@@ -39,7 +39,7 @@ function App() {
 
       <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
 
-      <Metronome value={{ bpm: bpm }} />
+      <Metronome value={{ bpm: bpm, tempo: tempo, tempoObjArray: tempoObjArray, tempoArray:tempoArray }} />
 
     </div>
   );
