@@ -8,12 +8,14 @@ const Metronome = props => {
 
 
     const tester = () => {
+        // needs a reset interval function
         let i = 1
         const testbeat = () => {
             i++
             setCount(i)
         }
         setInterval(testbeat, milliseconds)
+
     }
     return (
         <div>
