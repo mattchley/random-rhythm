@@ -10,17 +10,42 @@ const Metronome = props => {
 
     const tester = () => {
         // needs a reset interval function
-        if (timeSig == '3/4') {
-            console.log('time sig is 3/4')
-        } else {
-            console.log('time sig is 4/4')
-        }
+        console.log('tester started')
         let i = 1
-        const testbeat = () => {
+        const testbeatCommon = () => {
             i++
             setCount(i)
+            if (i == 4) {
+                console.log(`hit`)
+                i = 0
+                clearInterval(testbeatCommon)
+            }
         }
-        setInterval(testbeat, milliseconds)
+
+        const testbeatWaltz = () => {
+            i++
+            setCount(i)
+            if (i == 3) {
+                console.log(`hit`)
+                i = 0
+                clearInterval(testbeatWaltz)
+            }
+        }
+        const countCommon = () => setInterval(testbeatCommon, milliseconds)
+
+        const countWaltz = () => setInterval(testbeatWaltz, milliseconds)
+
+
+        if (timeSig == '3/4') {
+            console.log('time sig is 3/4')
+            countWaltz()
+
+        } else {
+            console.log('time sig is 4/4')
+            countCommon()
+        }
+
+
 
     }
     return (
