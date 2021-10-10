@@ -11,46 +11,28 @@ const Metronome = props => {
     const tester = () => {
         // needs a reset interval function
         console.log('tester started')
+
         let i = 1
-        const testbeatCommon = () => {
+    
+        const testbeat = () => {
             i++
             setCount(i)
-            if (i == 4) {
+            console.log(timeSig[0])
+            if (i == timeSig[0]) {
                 console.log(`hit`)
                 i = 0
-                clearInterval(testbeatCommon)
+                clearInterval(testbeat)
             }
         }
-
-        const testbeatWaltz = () => {
-            i++
-            setCount(i)
-            if (i == 3) {
-                console.log(`hit`)
-                i = 0
-                clearInterval(testbeatWaltz)
-            }
-        }
-        const countCommon = () => setInterval(testbeatCommon, milliseconds)
-
-        const countWaltz = () => setInterval(testbeatWaltz, milliseconds)
-
-
-        if (timeSig == '3/4') {
-            console.log('time sig is 3/4')
-            countWaltz()
-
-        } else {
-            console.log('time sig is 4/4')
-            countCommon()
-        }
-
+        
+        const universalCount = () => setInterval(testbeat, milliseconds)
+        universalCount()
 
 
     }
     return (
         <div>
-            <h1>Metronome Funcitonality here!</h1>
+            <h1>Metronome Funcitonality here! {timeSig}</h1>
             <p>{count}</p>
             <button onClick={(e) => { tester() }}>Test metronome</button>
         </div>
