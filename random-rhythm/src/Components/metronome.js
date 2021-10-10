@@ -7,34 +7,42 @@ const Metronome = props => {
     let timeSig = props.value.timeSig
     let milliseconds = 60000 / bpm
 
+    let i = 1
+    let intervalId;
+    let testbeat = () => {
+        i++
+        console.log(i)
+        // setCount(i)
+        // if (i == timeSig[0]) {
+        //     i = 0
+        // }
+    }
 
-    const tester = () => {
-        // needs a reset interval function
-        console.log('tester started')
-
-        let i = 1
-    
-        const testbeat = () => {
-            i++
-            setCount(i)
-            console.log(timeSig[0])
-            if (i == timeSig[0]) {
-                console.log(`hit`)
-                i = 0
-                clearInterval(testbeat)
-            }
+    let universalCount = () => {
+        if (intervalId) {
+            clearInterval(intervalId)
         }
-        
-        const universalCount = () => setInterval(testbeat, milliseconds)
+        intervalId = setInterval(testbeat, milliseconds)
+    }
+
+    let clearCount = () => {
+        console.log(i)
+        clearInterval(intervalId)
+        i = 0
+    }
+    const tester = () => {
         universalCount()
+    }
 
-
+    const killswitch = () => {
+        clearCount()
     }
     return (
         <div>
             <h1>Metronome Funcitonality here! {timeSig}</h1>
             <p>{count}</p>
             <button onClick={(e) => { tester() }}>Test metronome</button>
+            <button onClick={(e) => { killswitch() }}>kill metronome</button>
         </div>
     )
 
