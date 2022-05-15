@@ -6,7 +6,7 @@ const Tempo = props => {
 
 
     return (
-        <div>
+        <div className="div">
             <label for="tempo">Choose a Tempo:</label>
             <select name="tempo" onChange={e => props.onChange(e.currentTarget.value)} id="tempo">
                 {tempo.map(y => (

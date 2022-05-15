@@ -31,7 +31,7 @@ const RandomButton = props => {
     }
 
     return (
-        <div>
+        <div className="div">
             <button onClick={() => props.onClick(handleSubmit())}>Random Key/Scale</button>
         </div>
     )

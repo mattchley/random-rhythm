@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const Staff = props => {
-    const [staffCreated, setStaffCreated] = useState(false)
     const [randomArray, setRandomArray] = useState()
 
     const noteArray = props.value.keyArray
@@ -60,28 +59,21 @@ const Staff = props => {
 
     const handleClick = () => {
         generateRandomMotif()
-        setStaffCreated(!staffCreated)
     }
 
     return (
         <div>
             <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm} BPM</h1>
-            <button onClick={handleClick}>Print Scale</button>
-            <p>  {staffCreated ? prinatableScale : "Choose items above to generate scale staff"}</p>
+            <p> {prinatableScale}</p>
+            <button onClick={handleClick}>Print Random Mofit</button>
             <div className="staffContainer">
-                {staffCreated && randomArray ? randomArray.map((note) => {
+                {randomArray ? randomArray.map((note) => {
                     return (
                         < div className={`staffNote ${note.includes('♯') ? `${note[0]}sharp` : note}`}>
                             *
                         </div>
                     )
-                }) : prinatableScale.map((note) => {
-                    return (
-                        < div className={`staffNote ${note.includes('♯') ? `${note[0]}sharp` : note}`}>
-                            *
-                        </div>
-                    )
-                })}
+                }) : ""}
             </div>
 
         </div >

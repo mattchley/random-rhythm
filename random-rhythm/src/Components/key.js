@@ -6,7 +6,7 @@ const Key = props => {
     let keyList = props.value.keyArray
 
     return (
-        <div>
+        <div className="div">
             <label for="keySignature">Choose a Key Signature:</label>
 
             <select name="keySignature" onChange={e => props.onChange(e.currentTarget.value)} id="keySignature">

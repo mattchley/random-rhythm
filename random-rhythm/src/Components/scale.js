@@ -5,7 +5,7 @@ const Scale = props => {
     let scaleList = props.value.scaleArray
 
     return (
-        <div>
+        <div className="div">
             <label for="scale">Choose a Scale:</label>
             <select name="scale" onChange={e => props.onChange(e.currentTarget.value)} id="scale">
                 {scaleList.map(y => (

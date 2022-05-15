@@ -21,7 +21,7 @@ const BpmRange = props => {
 
 
     return (
-        <div>
+        <div className="div">
             <label for="scale">Choose a BPM:</label>
             <select name="scale" onChange={e => props.onChange(e.currentTarget.value)} id="scale">
                 {bpmArray.map(y => (

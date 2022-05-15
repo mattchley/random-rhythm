@@ -29,27 +29,35 @@ function App() {
 
   return (
     <div className="App">
-      <Key onChange={(value) => setKey(value)} value={{ keyArray: keyArray }} />
+      <div className='mainContainer'>
+        <div className="leftContainer">
 
-      <Scale onChange={(value) => setScale(value)} value={{ scaleArray: scaleArray }} />
+          <Key onChange={(value) => setKey(value)} value={{ keyArray: keyArray }} />
 
-      <TimeSignature onChange={(value) => setTimeSig(value)} value={{ timeSigArray: timeSigArray }} />
+          <Scale onChange={(value) => setScale(value)} value={{ scaleArray: scaleArray }} />
 
-      <Tempo onChange={(value) => setTempo(value)} value={{ tempoArray: tempoArray }} />
+          <TimeSignature onChange={(value) => setTimeSig(value)} value={{ timeSigArray: timeSigArray }} />
 
-      <BpmRange onChange={(value) => setBpm(value)} value={{ bpm: bpm, tempo: tempo, tempoArray: tempoArray, tempoObjArray: tempoObjArray }} />
+          <Tempo onChange={(value) => setTempo(value)} value={{ tempoArray: tempoArray }} />
 
-      <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray, tempoArray: tempoArray, tempoObjArray: tempoObjArray }}
-        onClick={(randomButtonResults) => {
-          setKey(randomButtonResults[0]);
-          setScale(randomButtonResults[1]);
-          setTempo(randomButtonResults[2]);
-          setBpm(randomButtonResults[3]);
-        }} />
+          <BpmRange onChange={(value) => setBpm(value)} value={{ bpm: bpm, tempo: tempo, tempoArray: tempoArray, tempoObjArray: tempoObjArray }} />
 
-      <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
+          <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray, tempoArray: tempoArray, tempoObjArray: tempoObjArray }}
+            onClick={(randomButtonResults) => {
+              setKey(randomButtonResults[0]);
+              setScale(randomButtonResults[1]);
+              setTempo(randomButtonResults[2]);
+              setBpm(randomButtonResults[3]);
+            }} />
+        </div>
+        <div className='rightContainer'>
+          <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
 
-      <Metronome value={{ bpm: bpm, timeSig: timeSig }} />
+          <Metronome value={{ bpm: bpm, timeSig: timeSig }} />
+        </div>
+      </div>
+
+
 
     </div>
   );

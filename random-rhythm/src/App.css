@@ -39,22 +39,35 @@
 }
 
 
+.mainContainer {
+  display: flex;
+}
+
+.leftContainer {
+  flex-direction: column;
+  text-align: left;
+}
+
+.div {
+  margin: 10%;
+}
+
+.rightContainer {
+  flex-direction: column;
+}
+
 .staffContainer {
   display: flex;
   margin-left: 10%;
   margin-right: 10%;
   flex-grow: 1;
   justify-content: center;
-  /* height: 160px; */
 }
 
 .staffNote {
   margin-left: 4%;
   margin-right: 4%;
   flex-direction: column;
-
-
-
 }
 
 .F {
