@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 const Staff = props => {
     const [staffCreated, setStaffCreated] = useState(false)
+    const [randomArray, setRandomArray] = useState()
 
     const noteArray = props.value.keyArray
     const scaleType = props.value.scale[0]
@@ -48,19 +49,34 @@ const Staff = props => {
     }
 
     const prinatableScale = createScale(scaleType, changeKey(noteArray, keyType))
+    let randomMotif = []
+    const generateRandomMotif = () => {
+        const randomIndex = () => Math.abs(Math.ceil(Math.random() * prinatableScale.length))
+        for (let i = 0; i < 7; i++) {
+            randomMotif.push(prinatableScale[randomIndex() - 1])
+        }
+        setRandomArray(randomMotif)
+    }
 
     const handleClick = () => {
+        generateRandomMotif()
         setStaffCreated(!staffCreated)
     }
 
     return (
         <div>
-            <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm} BPM</h1> <button onClick={handleClick}>test</button>
+            <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm} BPM</h1>
+            <button onClick={handleClick}>Print Scale</button>
             <p>  {staffCreated ? prinatableScale : "Choose items above to generate scale staff"}</p>
             <div className="staffContainer">
-                {prinatableScale.map((note) => {
+                {staffCreated && randomArray ? randomArray.map((note) => {
                     return (
-
+                        < div className={`staffNote ${note.includes('♯') ? `${note[0]}sharp` : note}`}>
+                            *
+                        </div>
+                    )
+                }) : prinatableScale.map((note) => {
+                    return (
                         < div className={`staffNote ${note.includes('♯') ? `${note[0]}sharp` : note}`}>
                             *
                         </div>
