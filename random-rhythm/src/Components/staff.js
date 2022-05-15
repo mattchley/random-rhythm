@@ -1,7 +1,7 @@
-import React from "react";
-
+import React, { useState } from "react";
 
 const Staff = props => {
+    const [staffCreated, setStaffCreated] = useState(false)
 
     const noteArray = props.value.keyArray
     const scaleType = props.value.scale[0]
@@ -31,61 +31,46 @@ const Staff = props => {
             // minor scale pattern steps: [2steps, 1step, 2steps, 2steps, 1step, 2steps, 2steps]
             // There are 12 notes in an octave and we only need 8 that folow the above pattern
             // the index counts should be 0 2 3 5 7 8 10
-            const minorScaleFilter = changeKey.filter((note, index) => {
-                if ([index] === 0) {
-                    return note
-                } else if ([index] === 2) {
-                    return note
-                } else if ([index] === 3) {
-                    return note
-                } else if ([index] === 5) {
-                    return note
-                } else if ([index] === 7) {
-                    return note
-                } else if ([index] === 8) {
-                    return note
-                } else if ([index] === 10) {
-                    return note
-                }
+            let minorScaleFiltered = []
 
-            })
+            for (let i = 0; i < changeKey.length; i++) {
+                if (i === 0 || i === 2 || i === 3 || i === 5 || i === 7 || i === 8 || i === 10) {
+                    minorScaleFiltered.push(changeKey[i])
+                }
+            }
+            return minorScaleFiltered
             // Returns the filtered scale to reflect a Minor Octave
-            return minorScaleFilter
+
 
         } else {
             // This funciton filters out the notes in the noteArray by their index to conform to the Major scale
             // minor scale pattern steps:[2 steps, 2 steps, 1 step, 2 steps, 2 steps, 2 steps, 1 step] 
             // There are 12 notes in an octave and we only need 8 that folow the above pattern
             // the index counts should be 0 2 4 5 7 9 11
-            const majorScaleFilter = changeKey.filter((note, index) => {
-                if ([index] === 0) {
-                    return note
-                } else if ([index] === 2) {
-                    return note
-                } else if ([index] === 4) {
-                    return note
-                } else if ([index] === 5) {
-                    return note
-                } else if ([index] === 7) {
-                    return note
-                } else if ([index] === 9) {
-                    return note
-                } else if ([index] === 11) {
-                    return note
+            let majorScaleFiltered = []
+            for (let i = 0; i < changeKey.length; i++) {
+                if (i === 0 || i === 2 || i === 4 || i === 5 || i === 7 || i === 9 || i === 11) {
+                    majorScaleFiltered.push(changeKey[i])
                 }
-            })
+            }
+            return majorScaleFiltered
             // Returns the filtered scale to reflect a Major Octave
-            return majorScaleFilter
         }
 
     }
 
+    const handleClick = () => {
+        setStaffCreated(!staffCreated)
+        createScale(scaleType, changeKey(noteArray, keyType))
+    }
+
     return (
         <div>
-            <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm} BPM</h1>
-            <p>{createScale(scaleType, changeKey(noteArray, keyType)).map(y => (
-                <option value={y}>{y}</option>
-            ))}</p>
+            <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm} BPM</h1> <button onClick={handleClick}>test</button>
+            {staffCreated ? createScale(scaleType, changeKey(noteArray, keyType)).map(y => {
+                return <p> {y}</p>
+            }
+            ) : <p>"Choose items above to generate scale staff"</p>}
 
         </div>
     )

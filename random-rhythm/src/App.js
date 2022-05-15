@@ -40,12 +40,11 @@ function App() {
       <BpmRange onChange={(value) => setBpm(value)} value={{ bpm: bpm, tempo: tempo, tempoArray: tempoArray, tempoObjArray: tempoObjArray }} />
 
       <RandomButton value={{ scaleArray: scaleArray, keyArray: keyArray, tempoArray: tempoArray, tempoObjArray: tempoObjArray }}
-        onClick={(value) => {
-          console.log(value)
-          // setKey(value[0]);
-          // setScale(value[1]);
-          // setTempo(value[2]);
-          // setBpm(value[3]);
+        onClick={(randomButtonResults) => {
+          setKey(randomButtonResults[0]);
+          setScale(randomButtonResults[1]);
+          setTempo(randomButtonResults[2]);
+          setBpm(randomButtonResults[3]);
         }} />
 
       <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
