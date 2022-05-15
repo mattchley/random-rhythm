@@ -32,7 +32,75 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+
+.staffContainer {
+  display: flex;
+  margin-left: 10%;
+  margin-right: 10%;
+  flex-grow: 1;
+  justify-content: center;
+  height: 160px;
+}
+
+.staffNote {
+  margin-left: 4%;
+  margin-right: 4%;
+  flex-direction: column;
+
+
+
+}
+
+.F {
+  margin-top: 24%;
+}
+
+.Fsharp {
+  margin-top: 22%;
+}
+
+.G {
+  margin-top: 20%;
+}
+
+.Gsharp {
+  margin-top: 18%;
+}
+
+.A {
+  margin-top: 16%;
+}
+
+.Asharp {
+  margin-top: 14%;
+}
+
+.B {
+  margin-top: 12%;
+}
+
+.C {
+  margin-top: 10%;
+}
+
+.Csharp {
+  margin-top: 8%;
+}
+
+.D {
+  margin-top: 6%;
+}
+
+.Dsharp {
+  margin-top: 4%;
+}
+
+.E {
+  margin-top: 2%;
 }

@@ -26,53 +26,49 @@ const Staff = props => {
     const createScale = (scaleType, changeKey) => {
         // Now that the array is in the fuction there will need to be a filtering of notes based on the scale type
         // FUTUE FUNC: will need to do all sorts of scale types but for now does Major/Minor for testing, maybe switch statement for future?
+        let scaleFiltered = []
         if (scaleType === 'Minor') {
-            // This funciton filters out the notes in the noteArray by their index to conform to the Minor scale
-            // minor scale pattern steps: [2steps, 1step, 2steps, 2steps, 1step, 2steps, 2steps]
-            // There are 12 notes in an octave and we only need 8 that folow the above pattern
-            // the index counts should be 0 2 3 5 7 8 10
-            let minorScaleFiltered = []
-
             for (let i = 0; i < changeKey.length; i++) {
                 if (i === 0 || i === 2 || i === 3 || i === 5 || i === 7 || i === 8 || i === 10) {
-                    minorScaleFiltered.push(changeKey[i])
+                    scaleFiltered.push(changeKey[i])
                 }
             }
-            return minorScaleFiltered
-            // Returns the filtered scale to reflect a Minor Octave
+            return scaleFiltered
 
 
         } else {
-            // This funciton filters out the notes in the noteArray by their index to conform to the Major scale
-            // minor scale pattern steps:[2 steps, 2 steps, 1 step, 2 steps, 2 steps, 2 steps, 1 step] 
-            // There are 12 notes in an octave and we only need 8 that folow the above pattern
-            // the index counts should be 0 2 4 5 7 9 11
-            let majorScaleFiltered = []
             for (let i = 0; i < changeKey.length; i++) {
                 if (i === 0 || i === 2 || i === 4 || i === 5 || i === 7 || i === 9 || i === 11) {
-                    majorScaleFiltered.push(changeKey[i])
+                    scaleFiltered.push(changeKey[i])
                 }
             }
-            return majorScaleFiltered
-            // Returns the filtered scale to reflect a Major Octave
+            return scaleFiltered
         }
 
     }
 
+    const prinatableScale = createScale(scaleType, changeKey(noteArray, keyType))
+
     const handleClick = () => {
         setStaffCreated(!staffCreated)
-        createScale(scaleType, changeKey(noteArray, keyType))
     }
 
     return (
         <div>
             <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm} BPM</h1> <button onClick={handleClick}>test</button>
-            {staffCreated ? createScale(scaleType, changeKey(noteArray, keyType)).map(y => {
-                return <p> {y}</p>
-            }
-            ) : <p>"Choose items above to generate scale staff"</p>}
+            <p>  {staffCreated ? prinatableScale : "Choose items above to generate scale staff"}</p>
+            <div className="staffContainer">
+                {prinatableScale.map((note) => {
+                    return (
 
-        </div>
+                        < div className={`staffNote ${note.includes('♯') ? `${note[0]}sharp` : note}`}>
+                            *
+                        </div>
+                    )
+                })}
+            </div>
+
+        </div >
     )
 
 }
