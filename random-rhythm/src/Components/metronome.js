@@ -3,46 +3,33 @@ import React, { useState } from "react";
 
 const Metronome = props => {
     const [count, setCount] = useState(1)
-    let bpm = props.value.bpm
-    let timeSig = props.value.timeSig
-    let milliseconds = 60000 / bpm
+    const [intervalId, setIntervalId] = useState(false);
 
-    let i = 1
-    let intervalId;
-    let testbeat = () => {
-        i++
-        console.log(i)
-        // setCount(i)
-        // if (i == timeSig[0]) {
-        //     i = 0
-        // }
-    }
+    const bpm = props.value.bpm
+    const timeSig = props.value.timeSig
+    const beatsPerMeasure = parseInt(timeSig[0])
+    const milliseconds = 60000 / bpm
 
-    let universalCount = () => {
-        if (intervalId) {
-            clearInterval(intervalId)
+
+    const startMetronome = () => {
+        const measureCalc = () => {
+            setCount(count => (count + 1) % beatsPerMeasure === 0 ? beatsPerMeasure : (count + 1) % beatsPerMeasure)
         }
-        intervalId = setInterval(testbeat, milliseconds)
+        if (intervalId) {
+            clearInterval(intervalId);
+            setCount(1);
+            setIntervalId(false)
+            return;
+        }
+        setIntervalId(setInterval(measureCalc, milliseconds))
     }
 
-    let clearCount = () => {
-        console.log(i)
-        clearInterval(intervalId)
-        i = 0
-    }
-    const tester = () => {
-        universalCount()
-    }
 
-    const killswitch = () => {
-        clearCount()
-    }
     return (
         <div>
             <h1>Metronome Funcitonality here! {timeSig}</h1>
             <p>{count}</p>
-            <button onClick={(e) => { tester() }}>Test metronome</button>
-            <button onClick={(e) => { killswitch() }}>kill metronome</button>
+            <button onClick={startMetronome}>{(intervalId) ? 'Stop metronome' : 'Test metronome'}</button>
         </div>
     )
 
