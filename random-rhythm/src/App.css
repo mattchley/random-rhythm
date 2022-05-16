@@ -1,3 +1,9 @@
+body {
+  margin-top: 3%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
 .App {
   text-align: center;
 }
@@ -41,15 +47,19 @@
 
 .mainContainer {
   display: flex;
+  height: 100%;
 }
 
 .leftContainer {
   flex-direction: column;
   text-align: left;
+  height: max-content;
 }
 
 .div {
-  margin: 10%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-right: 4%;
 }
 
 .rightContainer {
@@ -58,9 +68,6 @@
 
 .staffContainer {
   display: flex;
-  margin-left: 10%;
-  margin-right: 10%;
-  flex-grow: 1;
   justify-content: center;
 }
 

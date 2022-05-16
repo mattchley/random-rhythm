@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
 const Staff = props => {
-    const [randomArray, setRandomArray] = useState()
-
     const noteArray = props.value.keyArray
     const scaleType = props.value.scale[0]
     const keyType = props.value.key[0]
     const bpm = props.value.bpm[0]
+    const selectedScale = props.value.selectedScale
 
     // this function is set to change the key center of the scale.
     const changeKey = (noteArray, keyType) => {
@@ -46,36 +45,16 @@ const Staff = props => {
         }
 
     }
-
+    // e2-e6 need to create a background staff for bass and teble cleft
     const prinatableScale = createScale(scaleType, changeKey(noteArray, keyType))
-    let randomMotif = []
-    const generateRandomMotif = () => {
-        const randomIndex = () => Math.abs(Math.ceil(Math.random() * prinatableScale.length))
-        for (let i = 0; i < 7; i++) {
-            randomMotif.push(prinatableScale[randomIndex() - 1])
-        }
-        setRandomArray(randomMotif)
-    }
-
-    const handleClick = () => {
-        generateRandomMotif()
-    }
+    useEffect(() => {
+        selectedScale(prinatableScale)
+    }, [])
 
     return (
         <div>
             <h1> {props.value.key[0]} {props.value.scale[0]} scale at the {props.value.tempo[0]} tempo going {bpm} BPM</h1>
             <p> {prinatableScale}</p>
-            <button onClick={handleClick}>Print Random Mofit</button>
-            <div className="staffContainer">
-                {randomArray ? randomArray.map((note) => {
-                    return (
-                        < div className={`staffNote ${note.includes('♯') ? `${note[0]}sharp` : note}`}>
-                            *
-                        </div>
-                    )
-                }) : ""}
-            </div>
-
         </div >
     )
 

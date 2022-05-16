@@ -6,6 +6,7 @@ import BpmRange from './Components/bpmRange';
 import RandomButton from './Components/randomButton';
 import Metronome from './Components/metronome';
 import TimeSignature from './Components/timeSig';
+import RandomMotif from './Components/randomMotif';
 import './App.css';
 import React, { useState } from "react";
 
@@ -16,6 +17,7 @@ function App() {
   const [tempo, setTempo] = useState(' Largo: 40 - 60 ')
   const [bpm, setBpm] = useState('40')
   const [timeSig, setTimeSig] = useState('3/4')
+  const [selectedScale, setSelectedScale] = useState()
 
   const scaleArray = ["Major", "Minor"]
   const keyArray = ["A", "A♯/B♭", "B", "C", "C♯/D♭", "D", "D♯/E♭", "E", "F", "F♯/G♭", "G", "G♯/A♭"]
@@ -51,13 +53,16 @@ function App() {
             }} />
         </div>
         <div className='rightContainer'>
-          <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm] }} />
+          <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm], selectedScale: setSelectedScale }} />
 
           <Metronome value={{ bpm: bpm, timeSig: timeSig }} />
         </div>
+
       </div>
 
-
+      <div className='bottomContainer'>
+        <RandomMotif value={{ selectedScale: selectedScale }} />
+      </div>
 
     </div>
   );
