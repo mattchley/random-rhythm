@@ -13,7 +13,6 @@ const RandomButton = props => {
 
     const handleSubmit = () => {
         let tempoObj = props.value.tempoObjArray
-        console.log('hit')
         // this variable sets the terrishold for the Key generated
         let x = Math.abs(Math.ceil(Math.random() * props.value.keyArray.length - 1))
         // this variable sets the terrishold for the Scale generated

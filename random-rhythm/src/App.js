@@ -29,6 +29,37 @@ function App() {
   { name: 'Presto', bpm: '168-208', min: 168, max: 208 }]
   const timeSigArray = ['3/4', '4/4']
 
+
+  const changeKey = (keyArray, key) => {
+    let keyIndex = keyArray.findIndex(note => note === key)
+    let firstHalf = keyArray.slice(keyIndex, keyArray.length)
+    let secondHalf = keyArray.slice(0, keyIndex)
+    return firstHalf.concat(secondHalf)
+  }
+
+  const createScale = (scale, changeKey) => {
+    let scaleFiltered = []
+    if (scale === 'Minor') {
+      for (let i = 0; i < changeKey.length; i++) {
+        if (i === 0 || i === 2 || i === 3 || i === 5 || i === 7 || i === 8 || i === 10) {
+          scaleFiltered.push(changeKey[i])
+        }
+      }
+      return scaleFiltered
+
+
+    } else {
+      for (let i = 0; i < changeKey.length; i++) {
+        if (i === 0 || i === 2 || i === 4 || i === 5 || i === 7 || i === 9 || i === 11) {
+          scaleFiltered.push(changeKey[i])
+        }
+      }
+      return scaleFiltered
+    }
+
+  }
+  // e2-e6 need to create a background staff for bass and teble cleft
+  const prinatableScale = createScale(scale, changeKey(keyArray, key))
   return (
     <div className="App">
       <div className='mainContainer'>
@@ -53,7 +84,8 @@ function App() {
             }} />
         </div>
         <div className='rightContainer'>
-          <Staff value={{ scale: [scale, setScale], key: [key, setKey], keyArray: keyArray, tempo: [tempo, setTempo], bpm: [bpm, setBpm], selectedScale: setSelectedScale }} />
+          <Staff value={{ prinatableScale: prinatableScale, scale: scale, key: key, bpm: bpm, tempo: tempo }}
+          />
 
           <Metronome value={{ bpm: bpm, timeSig: timeSig }} />
         </div>
@@ -61,7 +93,7 @@ function App() {
       </div>
 
       <div className='bottomContainer'>
-        <RandomMotif value={{ selectedScale: selectedScale }} />
+        <RandomMotif value={{ prinatableScale: prinatableScale }} />
       </div>
 
     </div>

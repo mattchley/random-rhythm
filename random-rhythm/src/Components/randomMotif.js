@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 const RandomMotif = props => {
-    const { selectedScale } = props.value
+    const { prinatableScale } = props.value
     const [randomArray, setRandomArray] = useState()
 
 
     let randomMotif = []
     const generateRandomMotif = () => {
-        const randomIndex = () => Math.abs(Math.ceil(Math.random() * selectedScale.length))
+        const randomIndex = () => Math.abs(Math.ceil(Math.random() * prinatableScale.length))
         for (let i = 0; i < 8; i++) {
-            randomMotif.push(selectedScale[randomIndex() - 1])
+            randomMotif.push(prinatableScale[randomIndex() - 1])
         }
         setRandomArray(randomMotif)
     }
@@ -23,6 +23,7 @@ const RandomMotif = props => {
             <div className="staffContainer">
                 {randomArray ? randomArray.map((note) => {
                     return (
+
                         < div className={`staffNote ${note.includes('♯') ? `${note[0]}sharp` : note}`}>
                             <p>{note}</p>
                             *
